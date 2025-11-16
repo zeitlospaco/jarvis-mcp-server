@@ -1,1 +1,22 @@
-{\n  \"name\": \"jarvis-mcp-server\",\n  \"version\": \"1.0.0\",\n  \"description\": \"Jarvis AI System - MCP Server for Claude Desktop\",\n  \"main\": \"mcp-server.js\",\n  \"type\": \"module\",\n  \"scripts\": {\n    \"start\": \"node mcp-server.js\",\n    \"dev\": \"node --watch mcp-server.js\"\n  },\n  \"keywords\": [\"mcp\", \"jarvis\", \"ai\", \"agents\"],\n  \"author\": \"Volkan\",\n  \"license\": \"MIT\",\n  \"dependencies\": {\n    \"@modelcontextprotocol/sdk\": \"^1.0.0\"\n  }\n}\n
+{
+  "name": "jarvis-mcp-server",
+  "version": "1.0.0",
+  "description": "Jarvis AI System - HTTP MCP Server (Production-Ready)",
+  "main": "http-server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node http-server.js",
+    "dev": "node --watch http-server.js",
+    "start:stdio": "node mcp-server.js"
+  },
+  "keywords": ["mcp", "jarvis", "ai", "agents", "http"],
+  "author": "Volkan",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}
