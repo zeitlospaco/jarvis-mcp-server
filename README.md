@@ -1,75 +1,62 @@
-# Jarvis MCP Server
+# 🚀 Jarvis MCP Server
+**Production-Ready HTTP MCP Server für Claude Desktop Integration**
 
-**Claude Desktop Integration für Jarvis AI System**
+Verbindet **Claude** ↔ **n8n** ↔ **Supabase** für autonome Jarvis-Agenteneichung.
 
-## Was macht der Server?
+## ✨ Features
 
-Claude kann direkt mit Jarvis kommunizieren:
-- ✅ Kontexte im persistenten Memory speichern
-- ✅ Knowledge Base semantisch durchsuchen
-- ✅ Tasks in Monday/Slack/GitHub erstellen
-- ✅ n8n Workflows orchestrieren
+✅ **Semantic Search** – `conversation_search` via Supabase pgvector (RAG)  
+✅ **Memory Management** – Persistente Speicherung aller Interactions  
+✅ **Workflow Orchestration** – n8n-Integration für Task-Automatisierung  
+✅ **Task Creation** – Multi-Platform (Monday.com, GitHub, Slack)  
+✅ **Agent Monitoring** – Status & Health Checks  
+✅ **Production Ready** – Zero-Downtime Deployment  
 
-## Quick Start auf Replit
+## 📚 Verfügbare MCP-Tools
 
-### 1. GitHub Fork + Replit Connect
-- Gehe zu https://replit.com/new
-- GitHub Repo verbinden: `zeitlospaco/jarvis-mcp-server`
-- "Run" klicken
+### `conversation_search`
+Semantic Search in Jarvis Knowledge Base (RAG via pgvector)
 
-### 2. Secrets setzen (Replit Secrets Tab)
-```
-N8N_BASE_URL = https://n8n.hmd.services
-N8N_API_KEY = [dein n8n api key]
-```
+### `save_context`
+Speichere Claude-Jarvis Interaktionen für Future Retrieval
 
-### 3. Public URL kopieren
-Replit zeigt dir: `https://[random].replit.dev`
+### `trigger_workflow`
+Starte n8n Workflows direkt
 
-### 4. Claude Desktop Config updaten
+### `create_task`
+Erstelle Tasks über Multiple Plattformen
 
-**File:** `~/.config/Claude/claude_desktop_config.json`
+### `get_agent_status`
+Agenten-Monitoring & Health Checks
+
+## 🚀 Replit Deployment
+
+1. **GitHub Connection** (in Replit Settings)
+2. **Set Secrets** (siehe .env.example)
+3. **Run** – Auto-Deploy
+
+## 🔌 Claude Desktop Config
 
 ```json
 {
   "mcpServers": {
     "jarvis": {
-      "command": "node",
-      "args": ["/path/to/mcp-server.js"],
+      "command": "curl",
+      "args": ["-X", "POST", "https://YOUR-REPLIT-URL/mcp/tools/call"],
       "env": {
-        "N8N_BASE_URL": "https://n8n.hmd.services",
-        "N8N_API_KEY": "your-key-here"
+        "MCP_SERVER_URL": "https://YOUR-REPLIT-URL"
       }
     }
   }
 }
 ```
 
-Dann Claude Desktop neu starten → Tools sind verfügbar.
+## 📖 Weitere Ressourcen
 
-## Tools für Claude
+- [MCP Dokumentation](https://modelcontextprotocol.io/)
+- [n8n API Doku](https://docs.n8n.io/api/)
+- [Supabase pgvector](https://supabase.com/docs/guides/database/extensions/pgvector)
 
-### `save_context` 
-Speichert Konversationen ins Memory.
-
-### `query_knowledge`
-Durchsucht die Knowledge Base.
-
-### `create_task`
-Erstellt Tasks in Monday/Slack/GitHub.
-
-## Architektur
-
-```
-Claude Desktop
-     ↓ (MCP)
-Jarvis MCP Server (Replit)
-     ↓ (HTTP)
-n8n (n8n.hmd.services)
-     ↓
-Supabase | Monday | Slack | GitHub
-```
-
----
-
-**Status:** ✅ Production-Ready
+**Maintainer:** Volkan (HMD Services)  
+**License:** MIT  
+**Version:** 1.0.0

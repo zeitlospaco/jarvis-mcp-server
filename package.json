@@ -1,22 +1,24 @@
 {
   "name": "jarvis-mcp-server",
   "version": "1.0.0",
-  "description": "Jarvis AI System - HTTP MCP Server (Production-Ready)",
-  "main": "http-server.js",
+  "description": "Production MCP Server for Jarvis AI System - Claude Integration",
   "type": "module",
+  "main": "server.js",
   "scripts": {
-    "start": "node http-server.js",
-    "dev": "node --watch http-server.js",
-    "start:stdio": "node mcp-server.js"
+    "start": "node server.js",
+    "dev": "node --watch server.js"
   },
-  "keywords": ["mcp", "jarvis", "ai", "agents", "http"],
+  "keywords": ["mcp", "jarvis", "ai", "agents", "n8n", "claude"],
   "author": "Volkan",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
-    "node-fetch": "^3.3.2"
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "node-fetch": "^3.3.2",
+    "@supabase/supabase-js": "^2.38.4"
   },
-  "devDependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0"
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
