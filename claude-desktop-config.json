@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "jarvis": {
+      "command": "node",
+      "args": ["/path/to/jarvis-mcp-server/mcp-server.js"],
+      "env": {
+        "N8N_BASE_URL": "https://n8n.hmd.services",
+        "N8N_API_KEY": "REPLACE_WITH_YOUR_N8N_API_KEY"
+      }
+    }
+  }
+}
