@@ -1,0 +1,5 @@
+run = "npm start"
+modules = ["nodejs-20"]
+
+[env]
+N8N_BASE_URL = "https://n8n.hmd.services"
