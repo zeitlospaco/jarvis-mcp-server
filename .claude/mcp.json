@@ -1,0 +1,92 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/mnt/project",
+        "/mnt/user-data/uploads",
+        "/mnt/user-data/outputs",
+        "/home/claude"
+      ],
+      "disabled": false,
+      "alwaysAllow": [
+        "read_file",
+        "write_file",
+        "list_directory",
+        "create_directory"
+      ]
+    },
+    "browser": {
+      "command": "npx",
+      "args": ["-y", "browsermcp"],
+      "disabled": false,
+      "env": {
+        "BROWSER_MCP_DEBUG": "false"
+      }
+    },
+    "jarvis-mcp-server": {
+      "command": "node",
+      "args": ["/path/to/jarvis-mcp-server/server.js"],
+      "disabled": false,
+      "env": {
+        "PORT": "3001",
+        "N8N_URL": "https://n8n.hmd.services",
+        "SUPABASE_URL": "${SUPABASE_URL}",
+        "SUPABASE_KEY": "${SUPABASE_KEY}",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "SLACK_WEBHOOK": "${SLACK_WEBHOOK}",
+        "NODE_ENV": "production"
+      },
+      "alwaysAllow": [
+        "trigger_workflow",
+        "query_memory",
+        "store_memory",
+        "get_agent_status",
+        "create_task",
+        "search_knowledge_base"
+      ]
+    },
+    "replit-execution": {
+      "command": "curl",
+      "args": ["-s", "https://jarvis-mcp.replit.app/mcp"],
+      "disabled": false,
+      "env": {
+        "REPLIT_APP_URL": "https://jarvis-mcp.replit.app"
+      }
+    },
+    "github-operations": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "disabled": false,
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}",
+        "GITHUB_REPOSITORY": "zeitlospaco/jarvis-mcp-server"
+      },
+      "alwaysAllow": [
+        "create_repository",
+        "get_file_contents",
+        "push_files",
+        "create_issue",
+        "create_pull_request"
+      ]
+    },
+    "postgres-queries": {
+      "command": "node",
+      "args": ["./adapters/postgres-mcp.js"],
+      "disabled": false,
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}",
+        "SUPABASE_CONNECTION": "true"
+      }
+    }
+  },
+  "config": {
+    "cacheDir": "./.mcp-cache",
+    "logLevel": "info",
+    "timeout": 30000,
+    "retryAttempts": 3,
+    "fallbackOnError": true
+  }
+}
